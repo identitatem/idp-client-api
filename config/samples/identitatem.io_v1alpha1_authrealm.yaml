@@ -1,0 +1,6 @@
+apiVersion: identityconfig.identitatem.io/v1alpha1
+kind: AuthRealm
+metadata:
+  name: authrealm-sample
+  namespace: default
+spec:
