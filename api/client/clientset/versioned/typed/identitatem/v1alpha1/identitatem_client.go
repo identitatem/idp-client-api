@@ -13,6 +13,7 @@ import (
 type IdentityconfigV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	AuthRealmsGetter
+	ClusterOAuthsGetter
 	StrategiesGetter
 }
 
@@ -23,6 +24,10 @@ type IdentityconfigV1alpha1Client struct {
 
 func (c *IdentityconfigV1alpha1Client) AuthRealms(namespace string) AuthRealmInterface {
 	return newAuthRealms(c, namespace)
+}
+
+func (c *IdentityconfigV1alpha1Client) ClusterOAuths(namespace string) ClusterOAuthInterface {
+	return newClusterOAuths(c, namespace)
 }
 
 func (c *IdentityconfigV1alpha1Client) Strategies(namespace string) StrategyInterface {
