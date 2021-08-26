@@ -12,6 +12,14 @@ type AuthRealmListerExpansion interface{}
 // AuthRealmNamespaceLister.
 type AuthRealmNamespaceListerExpansion interface{}
 
+// ClusterOAuthListerExpansion allows custom methods to be added to
+// ClusterOAuthLister.
+type ClusterOAuthListerExpansion interface{}
+
+// ClusterOAuthNamespaceListerExpansion allows custom methods to be added to
+// ClusterOAuthNamespaceLister.
+type ClusterOAuthNamespaceListerExpansion interface{}
+
 // StrategyListerExpansion allows custom methods to be added to
 // StrategyLister.
 type StrategyListerExpansion interface{}
