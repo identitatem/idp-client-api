@@ -6,4 +6,6 @@ package v1alpha1
 
 type AuthRealmExpansion interface{}
 
+type ClusterOAuthExpansion interface{}
+
 type StrategyExpansion interface{}

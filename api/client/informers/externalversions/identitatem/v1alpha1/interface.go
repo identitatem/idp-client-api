@@ -12,6 +12,8 @@ import (
 type Interface interface {
 	// AuthRealms returns a AuthRealmInformer.
 	AuthRealms() AuthRealmInformer
+	// ClusterOAuths returns a ClusterOAuthInformer.
+	ClusterOAuths() ClusterOAuthInformer
 	// Strategies returns a StrategyInformer.
 	Strategies() StrategyInformer
 }
@@ -30,6 +32,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // AuthRealms returns a AuthRealmInformer.
 func (v *version) AuthRealms() AuthRealmInformer {
 	return &authRealmInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// ClusterOAuths returns a ClusterOAuthInformer.
+func (v *version) ClusterOAuths() ClusterOAuthInformer {
+	return &clusterOAuthInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Strategies returns a StrategyInformer.

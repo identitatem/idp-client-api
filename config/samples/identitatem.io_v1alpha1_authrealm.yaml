@@ -4,3 +4,8 @@ metadata:
   name: authrealm-sample
   namespace: default
 spec:
+  type: dex
+  identityProviders:
+  - name: my-idp
+
+

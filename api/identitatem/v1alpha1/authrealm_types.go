@@ -20,10 +20,6 @@ type AuthRealmSpec struct {
 	// Placement defines a rule to select a set of ManagedClusters from the ManagedClusterSets bound
 	// to the placement namespace.
 	PlacementRef corev1.LocalObjectReference `json:"placementRef,omitempty"`
-	// mappingMethod determines how identities from this provider are mapped to users
-	// Defaults to "claim"
-	// +optional
-	MappingMethod openshiftconfigv1.MappingMethodType `json:"mappingMethod,omitempty"`
 
 	//RemediateAction defines the remediation action to apply to the idp policy
 	// +kubebuilder:validation:Enum=Enforce;inform
@@ -39,7 +35,7 @@ type AuthRealmSpec struct {
 	//Certificates references a secret containing `ca.crt`, `tls.crt`, and `tls.key`
 	CertificatesSecretRef corev1.LocalObjectReference `json:"certificatesSecretRef,omitempty"`
 	// IdentityProviders reference an identity provider
-	// +required
+	// +optional
 	IdentityProviders []openshiftconfigv1.IdentityProvider `json:"identityProviders,omitempty"`
 }
 

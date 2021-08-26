@@ -18,6 +18,10 @@ func (c *FakeIdentityconfigV1alpha1) AuthRealms(namespace string) v1alpha1.AuthR
 	return &FakeAuthRealms{c, namespace}
 }
 
+func (c *FakeIdentityconfigV1alpha1) ClusterOAuths(namespace string) v1alpha1.ClusterOAuthInterface {
+	return &FakeClusterOAuths{c, namespace}
+}
+
 func (c *FakeIdentityconfigV1alpha1) Strategies(namespace string) v1alpha1.StrategyInterface {
 	return &FakeStrategies{c, namespace}
 }
