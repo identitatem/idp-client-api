@@ -42,8 +42,8 @@ type AuthRealmSpec struct {
 type AuthProxyType string
 
 const (
-	AuthProxyDex   AuthProxyType = "dex"
-	AuthProxyRHSSO AuthProxyType = "rhsso"
+	AuthProxyDex AuthProxyType = "dex"
+	// AuthProxyRHSSO AuthProxyType = "rhsso"
 )
 
 // AuthRealmStatus defines the observed state of AuthRealm

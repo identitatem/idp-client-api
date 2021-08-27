@@ -32,7 +32,7 @@ type StrategyType string
 
 const (
 	BackplaneStrategyType StrategyType = "backplane"
-	GrcStrategyType       StrategyType = "grc"
+	// GrcStrategyType       StrategyType = "grc"
 )
 
 // StrategyStatus defines the observed state of Strategy
@@ -44,39 +44,6 @@ type StrategyStatus struct {
 	// +optional
 	Conditions []metav1.Condition `json:"conditions,omitempty"`
 }
-
-//type StrategyCondition string
-//
-//// Strategy Conditions
-//const (
-//	InitializingCondition StrategyCondition = "Initializing"
-//	PlacementCondition    StrategyCondition = "Placement"
-//	FailedCondition       StrategyCondition = "Failed"
-//)
-//
-//// Placement Condition reasons
-//const (
-//	// BuildingPlacemenReason is used as the reason when the Placement policy is being created
-//	BuildingPlacementReason = "BuildingPlacement"
-//	// AwaitingPlacementDecisionReason is used as the reason when the Strategy is waiting for the Placement to
-//	// be processed and a PlacementDecision to be generated
-//	AwaitingPlacementDecisionReason = "AwaitingPlacementDecision"
-//	// ProcessingPlacementDecisionReason is used as the reason when the managed clusters to apply the strategy
-//	// to have been determined and the configuration of those managed clusters has begun
-//	ProcessingPlacmentDecisionReason = "ProcessingPlacementDecision"
-//	// CompletedPlacementReason is used as the reason when the processing of the placement decision has been
-//	// completed
-//	CompletedPlacmentReason = "Completed"
-//)
-//
-//// Failed Condition reasons
-//const (
-//	// PlacementErrorFailedReason is used as the reason when the Placement policy
-//	PlacementErrorFailedReason = "PlacementError"
-//	// GeneralErrorFailedReason is used as the reason when there is an error not handled by
-//	// any of the above reasons
-//	GeneralErrorFailedReason = "GeneralError"
-//)
 
 // +genclient
 // +kubebuilder:object:root=true
