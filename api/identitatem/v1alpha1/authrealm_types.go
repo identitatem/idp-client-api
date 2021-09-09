@@ -17,6 +17,9 @@ type AuthRealmSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
+	// Prefix defines a string that will prefix generated resources to make their name unique
+	// This is immutable
+	Prefix string `json:"prefix,omitempty"`
 	// Placement defines a rule to select a set of ManagedClusters from the ManagedClusterSets bound
 	// to the placement namespace.
 	PlacementRef corev1.LocalObjectReference `json:"placementRef,omitempty"`

@@ -599,6 +599,10 @@ spec:
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
                 type: object
+              prefix:
+                description: Prefix defines a string that will prefix generated resources
+                  to make their name unique This is immutable
+                type: string
               remediateAction:
                 description: RemediateAction defines the remediation action to apply
                   to the idp policy
