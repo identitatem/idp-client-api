@@ -606,11 +606,10 @@ spec:
                 - enforce
                 - inform
                 type: string
-              routeSubdomain:
-                description: RouteSubdomain defines a string that will be used for
+              routeSubDomain:
+                description: RouteSubDomain defines a string that will be used for
                   the OAuth name displayed to the user when they login.  It will also
-                  be used for building the route for the authentication URL. This
-                  is immutable
+                  be used for building the redirect URI callback. This is immutable
                 type: string
               type:
                 enum:
