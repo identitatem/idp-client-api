@@ -18,7 +18,7 @@ endif
 # enable Go modules
 export GO111MODULE=on
 
-all: manager
+all: manifests generate-clients 
 
 check: check-copyright
 
@@ -41,9 +41,6 @@ install: manifests
 uninstall: manifests
 	kustomize build config/crd | kubectl delete -f -
 
-undeploy:
-	kubectl delete --wait=true -k config/default
-
 # Generate manifests e.g. CRD, RBAC etc.
 manifests: controller-gen
 	$(CONTROLLER_GEN) $(CRD_OPTIONS) rbac:roleName=manager-role webhook paths="./..." output:crd:artifacts:config=config/crd/bases
@@ -62,22 +59,6 @@ generate: kubebuilder-tools controller-gen
 
 generate-clients: generate
 	./hack/update-codegen.sh
-
-# Build the docker image
-docker-build: test
-	docker build . -t ${IMG}
-
-# Build the docker image
-docker-build-coverage: docker-build
-	docker build . \
-	--build-arg DOCKER_BASE_IMAGE=${IMG} \
-	-f Dockerfile-coverage \
-	-t ${IMG_COVERAGE}
-
-
-# Push the docker image
-docker-push:
-	docker push ${IMG}
 
 # find or download controller-gen
 # download controller-gen if necessary
@@ -106,20 +87,6 @@ ifeq (, $(shell which kubebuilder))
 		chmod +x $$KUBEBUILDER_TMP_DIR/kubebuilder && mv $$KUBEBUILDER_TMP_DIR/kubebuilder /usr/local/bin/ ;\
 	)
 endif
-
-
-functional-test-crds:
-	@for FILE in "test/config/crd/external"; do kubectl apply -f $$FILE;done
-
-functional-test-full: docker-build-coverage
-	@build/run-functional-tests.sh $(IMG_COVERAGE)
-
-functional-test-full-clean:
-	@build/run-functional-tests-clean.sh
-
-functional-test:
-	@echo running functional tests
-	ginkgo -tags functional -v --slowSpecThreshold=30 test/functional -- -v=5
 
 # See https://book.kubebuilder.io/reference/envtest.html.
 #    kubebuilder 2.3.x contained kubebuilder and etc in a tgz
