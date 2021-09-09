@@ -17,11 +17,11 @@ type AuthRealmSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// RouteSubdomain defines a string that will be used for the OAuth name displayed to the
-	// user when they login.  It will also be used for building the route for the authentication URL.
+	// RouteSubDomain defines a string that will be used for the OAuth name displayed to the
+	// user when they login.  It will also be used for building the redirect URI callback.
 	// This is immutable
 	// +required
-	RouteSubdomain string `json:"routeSubdomain,omitempty"`
+	RouteSubDomain string `json:"routeSubDomain,omitempty"`
 
 	// Placement defines a rule to select a set of ManagedClusters from the ManagedClusterSets bound
 	// to the placement namespace.
