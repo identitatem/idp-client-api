@@ -17,15 +17,18 @@ type AuthRealmSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Prefix defines a string that will prefix generated resources to make their name unique
+	// RouteSubdomain defines a string that will be used for the OAuth name displayed to the
+	// user when they login.  It will also be used for building the route for the authentication URL.
 	// This is immutable
-	Prefix string `json:"prefix,omitempty"`
+	// +required
+	RouteSubdomain string `json:"routeSubdomain,omitempty"`
+
 	// Placement defines a rule to select a set of ManagedClusters from the ManagedClusterSets bound
 	// to the placement namespace.
 	PlacementRef corev1.LocalObjectReference `json:"placementRef,omitempty"`
 
 	//RemediateAction defines the remediation action to apply to the idp policy
-	// +kubebuilder:validation:Enum=Enforce;inform
+	// +kubebuilder:validation:Enum=enforce;inform
 	// +required
 	RemediateAction policyv1.RemediationAction `json:"remediateAction,omitempty"`
 
