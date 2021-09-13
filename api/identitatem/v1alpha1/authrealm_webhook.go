@@ -29,7 +29,7 @@ func (r *AuthRealm) SetupWebhookWithManager(mgr ctrl.Manager) error {
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 
 // TODO(user): change verbs to "verbs=create;update;delete" if you want to enable deletion validation.
-//+kubebuilder:webhook:verbs=create;update,path=/validate-identitatem-io-identitatem-io-v1alpha1-authrealm,mutating=false,failurePolicy=fail,sideEffects=None,groups=identitatem.io.identitatem.io,resources=authrealms,versions=v1alpha1,name=vauthrealm.kb.io,admissionReviewVersions={v1,v1beta1}
+//+kubebuilder:webhook:verbs=create;update,path=/validate-identityconfig-identitatem-io-v1alpha1-authrealm,mutating=false,failurePolicy=fail,sideEffects=None,groups=identityconfig.identitatem.io,resources=authrealms,versions=v1alpha1,name=vauthrealm.kb.io,admissionReviewVersions={v1,v1beta1}
 
 var _ webhook.Validator = &AuthRealm{}
 

@@ -13,12 +13,12 @@ webhooks:
     service:
       name: webhook-service
       namespace: system
-      path: /validate-identitatem-io-identitatem-io-v1alpha1-authrealm
+      path: /validate-identityconfig-identitatem-io-v1alpha1-authrealm
   failurePolicy: Fail
   name: vauthrealm.kb.io
   rules:
   - apiGroups:
-    - identitatem.io.identitatem.io
+    - identityconfig.identitatem.io
     apiVersions:
     - v1alpha1
     operations:
