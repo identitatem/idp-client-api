@@ -3,7 +3,6 @@
 package v1alpha1
 
 import (
-	"context"
 	"fmt"
 	"regexp"
 
@@ -41,29 +40,29 @@ func (r *AuthRealm) ValidateCreate() error {
 	// TODO(user): fill in your validation logic upon object creation.
 	//var allErrs field.ErrorList
 
-	authRealmList := &AuthRealmList{}
+	// authRealmList := &AuthRealmList{}
 
-	if err := Client.List(context.TODO(), authRealmList); err != nil {
-		return fmt.Errorf("unable to list AuthRealms: %s", err)
-	}
+	// if err := Client.List(context.TODO(), authRealmList); err != nil {
+	// 	return fmt.Errorf("unable to list AuthRealms: %s", err)
+	// }
 
-	for _, authRealm := range authRealmList.Items {
-		if authRealm.Name == r.Name {
-			return fmt.Errorf("AuthRealm CR already exists with that name")
-		}
-	}
+	// for _, authRealm := range authRealmList.Items {
+	// 	if authRealm.Name == r.Name {
+	// 		return fmt.Errorf("AuthRealm CR already exists with that name")
+	// 	}
+	// }
 
 	// MUST follow rules for internet subdomain name
 	//domainRegex, _ := regexp.Compile(`^(?!-)[A-Za-z0-9-]{1, 63}(?<!-)$`)
 	//domainRegex, _ := regexp.Compile(`^[A-Za-z0-9-](?:[A-Za-z0-9-]{0, 61}[a-z0-9])$`)
 	//domainRegex, _ := regexp.Compile(`^([a-zA-Z0-9][a-zA-Z0-9-_]{0,61}[a-zA-Z0-9]?[^-_])$`)
-	domainRegex, _ := regexp.Compile(`^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$`)
+	domainRegex, _ := regexp.Compile(`^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$`) // DNS-1123 subdomain
 
 	if r.Spec.RouteSubDomain == "" {
 		return fmt.Errorf("RouteSubDomain MUST be specified")
 	} else if !domainRegex.MatchString(r.Spec.RouteSubDomain) {
 		return fmt.Errorf(
-			"RouteSubDomain \"%s\" is invalid: a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is \"%s\"",
+			"RouteSubDomain \"%s\" is invalid: a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example', regex used for validation is \"%s\"",
 			r.Spec.RouteSubDomain,
 			domainRegex.String())
 	}
@@ -84,6 +83,11 @@ func (r *AuthRealm) ValidateUpdate(old runtime.Object) error {
 	authrealmlog.Info("validate update", "name", r.Name)
 
 	// TODO(user): fill in your validation logic upon object update.
+	oldAuthRealm := old.(*AuthRealm)
+	if r.Spec.RouteSubDomain != oldAuthRealm.Spec.RouteSubDomain {
+		return fmt.Errorf("RouteSubDomain is immutable and cannot be changed")
+	}
+
 	return nil
 }
 
