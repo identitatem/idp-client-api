@@ -17,8 +17,7 @@ type AuthRealmSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// RouteSubDomain defines a string that will be used for the OAuth name displayed to the
-	// user when they login. It will also be used for building the redirect URI callback.
+	// RouteSubDomain defines a string that will be used for building the redirect URI callback.
 	// The value must be a valid DNS-1123 subdomain. This field is immutable.
 	// +required
 	// +kubebuilder:validation:MinLength:=1

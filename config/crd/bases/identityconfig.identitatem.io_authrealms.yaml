@@ -608,9 +608,8 @@ spec:
                 type: string
               routeSubDomain:
                 description: RouteSubDomain defines a string that will be used for
-                  the OAuth name displayed to the user when they login. It will also
-                  be used for building the redirect URI callback. The value must be
-                  a valid DNS-1123 subdomain. This field is immutable.
+                  building the redirect URI callback. The value must be a valid DNS-1123
+                  subdomain. This field is immutable.
                 maxLength: 63
                 minLength: 1
                 type: string
