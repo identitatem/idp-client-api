@@ -63,7 +63,7 @@ type AuthRealmStatus struct {
 	// +optional
 	Conditions []metav1.Condition `json:"conditions"`
 	// +optional
-	Cluster []AuthRealmClusterStatus `json:"cluster,omitempty"`
+	Clusters []AuthRealmClusterStatus `json:"clusters,omitempty"`
 }
 
 const (
@@ -78,7 +78,7 @@ type AuthRealmClusterStatus struct {
 	// The name of the cluster
 	Name string `json:"name"`
 	// Conditions contains the different condition statuses for each cluster for this AuthRealm.
-	Conditions metav1.Condition `json:"conditions"`
+	Conditions []metav1.Condition `json:"conditions"`
 }
 
 // +genclient
