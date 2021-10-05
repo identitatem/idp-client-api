@@ -61,11 +61,24 @@ type AuthRealmStatus struct {
 	// Conditions contains the different condition statuses for this AuthRealm.
 	// +optional
 	Conditions []metav1.Condition `json:"conditions"`
+	// +optional
+	Clusters []AuthRealmClusterStatus `json:"clusters,omitempty"`
 }
 
 const (
-	AuthRealmSucceed string = "succeed"
+	//Applied when the authrealm was correct applied,
+	//it does not guaranty that the OAuth gets updated on the managedcluster
+	//for that you will have to check the cluster status
+	AuthRealmApplied string = "Applied"
 )
+
+// AuthRealmClusterStatus defines the status for each cluster
+type AuthRealmClusterStatus struct {
+	// The name of the cluster
+	Name string `json:"name"`
+	// Conditions contains the different condition statuses for each cluster for this AuthRealm.
+	Conditions []metav1.Condition `json:"conditions"`
+}
 
 // +genclient
 // +kubebuilder:object:root=true
