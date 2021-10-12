@@ -45,19 +45,20 @@ type AuthRealmSpec struct {
 	// +optional
 	IdentityProviders []openshiftconfigv1.IdentityProvider `json:"identityProviders,omitempty"`
 
-	// LDAPExtraConfig extra server configuration setting for LDAP
+	// LDAPExtraConfig extra server configuration setting for LDAP,
+	// the key being the idp.name
 	// +optional
-	LDAPExtraConfig LDAPExtraConfig `json:"ldapExtraConfig"`
+	LDAPExtraConfig map[string]LDAPExtraConfig `json:"ldapExtraConfig,omitempty"`
 }
 
 type LDAPExtraConfig struct {
 	// BaseDN to start the LDAP user search from. For example "cn=users,dc=example,dc=com"
 	// +optional
-	BaseDN string `json:"baseDN"`
+	BaseDN string `json:"baseDN,omitempty"`
 
 	// Optional filter to apply when searching the directory. For example "(objectClass=person)"
 	// +optional
-	Filter string `json:"filter"`
+	Filter string `json:"filter,omitempty"`
 }
 type AuthProxyType string
 
