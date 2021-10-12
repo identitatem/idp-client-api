@@ -45,10 +45,10 @@ type AuthRealmSpec struct {
 	// +optional
 	IdentityProviders []openshiftconfigv1.IdentityProvider `json:"identityProviders,omitempty"`
 
-	// LDAPExtraConfig extra server configuration setting for LDAP,
+	// LDAPExtraConfigs extra server configuration setting for LDAP,
 	// the key being the idp.name
 	// +optional
-	LDAPExtraConfig map[string]LDAPExtraConfig `json:"ldapExtraConfig,omitempty"`
+	LDAPExtraConfigs map[string]LDAPExtraConfig `json:"ldapExtraConfigs,omitempty"`
 }
 
 type LDAPExtraConfig struct {

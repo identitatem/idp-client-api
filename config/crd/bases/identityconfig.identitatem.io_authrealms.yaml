@@ -590,7 +590,7 @@ spec:
                       type: string
                   type: object
                 type: array
-              ldapExtraConfig:
+              ldapExtraConfigs:
                 additionalProperties:
                   properties:
                     baseDN:
@@ -602,7 +602,7 @@ spec:
                         For example "(objectClass=person)"
                       type: string
                   type: object
-                description: LDAPExtraConfig extra server configuration setting for
+                description: LDAPExtraConfigs extra server configuration setting for
                   LDAP, the key being the idp.name
                 type: object
               placementRef:
