@@ -14,6 +14,8 @@ type Interface interface {
 	AuthRealms() AuthRealmInformer
 	// ClusterOAuths returns a ClusterOAuthInformer.
 	ClusterOAuths() ClusterOAuthInformer
+	// IDPConfigs returns a IDPConfigInformer.
+	IDPConfigs() IDPConfigInformer
 	// Strategies returns a StrategyInformer.
 	Strategies() StrategyInformer
 }
@@ -37,6 +39,11 @@ func (v *version) AuthRealms() AuthRealmInformer {
 // ClusterOAuths returns a ClusterOAuthInformer.
 func (v *version) ClusterOAuths() ClusterOAuthInformer {
 	return &clusterOAuthInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// IDPConfigs returns a IDPConfigInformer.
+func (v *version) IDPConfigs() IDPConfigInformer {
+	return &iDPConfigInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // Strategies returns a StrategyInformer.

@@ -8,4 +8,6 @@ type AuthRealmExpansion interface{}
 
 type ClusterOAuthExpansion interface{}
 
+type IDPConfigExpansion interface{}
+
 type StrategyExpansion interface{}
