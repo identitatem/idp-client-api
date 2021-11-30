@@ -102,7 +102,8 @@ var _ = Describe("Test ClientSet", func() {
 					Namespace: AuthRealmNameSpace,
 				},
 				Spec: identitatemv1alpha1.AuthRealmSpec{
-					Type: identitatemv1alpha1.AuthProxyDex,
+					Type:           identitatemv1alpha1.AuthProxyDex,
+					RouteSubDomain: "mydomain.mycompany.com",
 					CertificatesSecretRef: corev1.LocalObjectReference{
 						Name: CertificatesSecretRef,
 					},
