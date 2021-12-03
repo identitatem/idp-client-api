@@ -22,6 +22,10 @@ func (c *FakeIdentityconfigV1alpha1) ClusterOAuths(namespace string) v1alpha1.Cl
 	return &FakeClusterOAuths{c, namespace}
 }
 
+func (c *FakeIdentityconfigV1alpha1) IDPConfigs(namespace string) v1alpha1.IDPConfigInterface {
+	return &FakeIDPConfigs{c, namespace}
+}
+
 func (c *FakeIdentityconfigV1alpha1) Strategies(namespace string) v1alpha1.StrategyInterface {
 	return &FakeStrategies{c, namespace}
 }

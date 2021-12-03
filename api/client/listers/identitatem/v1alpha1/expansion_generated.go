@@ -20,6 +20,14 @@ type ClusterOAuthListerExpansion interface{}
 // ClusterOAuthNamespaceLister.
 type ClusterOAuthNamespaceListerExpansion interface{}
 
+// IDPConfigListerExpansion allows custom methods to be added to
+// IDPConfigLister.
+type IDPConfigListerExpansion interface{}
+
+// IDPConfigNamespaceListerExpansion allows custom methods to be added to
+// IDPConfigNamespaceLister.
+type IDPConfigNamespaceListerExpansion interface{}
+
 // StrategyListerExpansion allows custom methods to be added to
 // StrategyLister.
 type StrategyListerExpansion interface{}

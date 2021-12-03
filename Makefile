@@ -26,11 +26,11 @@ check-copyright:
 	@build/check-copyright.sh
 
 test: generate fmt vet manifests
-	@go test ./... -coverprofile cover.out ;\
-	COVERAGE=`go tool cover -func="cover.out" | grep "total:" | awk '{ print $$3 }' | sed 's/[][()><%]/ /g'` ;\
-	echo "-------------------------------------------------------------------------" ;\
-	echo "TOTAL COVERAGE IS $$COVERAGE%" ;\
-	echo "-------------------------------------------------------------------------" ;\
+	@go test ./... -coverprofile cover.out &&\
+	COVERAGE=`go tool cover -func="cover.out" | grep "total:" | awk '{ print $$3 }' | sed 's/[][()><%]/ /g'` &&\
+	echo "-------------------------------------------------------------------------" &&\
+	echo "TOTAL COVERAGE IS $$COVERAGE%" &&\
+	echo "-------------------------------------------------------------------------" &&\
 	go tool cover -html "cover.out" -o ${PROJECT_DIR}/cover.html 
 	
 # Install CRDs into a cluster

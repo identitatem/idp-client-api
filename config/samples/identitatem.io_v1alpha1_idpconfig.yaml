@@ -1,0 +1,8 @@
+apiVersion: identityconfig.identitatem.io/v1alpha1
+kind: IDPConfig
+metadata:
+  name: idpconfig-sample
+  namespace: default
+spec:
+
+

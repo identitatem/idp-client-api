@@ -43,6 +43,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Identityconfig().V1alpha1().AuthRealms().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("clusteroauths"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Identityconfig().V1alpha1().ClusterOAuths().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("idpconfigs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Identityconfig().V1alpha1().IDPConfigs().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("strategies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Identityconfig().V1alpha1().Strategies().Informer()}, nil
 

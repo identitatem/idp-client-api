@@ -5,6 +5,7 @@ metadata:
   namespace: default
 spec:
   type: dex
+  routeSubDomain: mydomain.mycompany.com
   identityProviders:
   - name: my-idp
 
