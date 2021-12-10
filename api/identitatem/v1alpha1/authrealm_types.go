@@ -34,7 +34,7 @@ type AuthRealmSpec struct {
 	RemediateAction policyv1.RemediationAction `json:"remediateAction,omitempty"`
 
 	// +kubebuilder:validation:Enum=dex;rhsso
-	// +required
+	// +optional
 	Type AuthProxyType `json:"type,omitempty"`
 	//Host defines the url of the proxy
 	// +required
