@@ -3,8 +3,8 @@
 package v1alpha1
 
 import (
-	policyv1 "github.com/open-cluster-management/governance-policy-propagator/pkg/apis/policy/v1"
 	openshiftconfigv1 "github.com/openshift/api/config/v1"
+	policyv1 "github.com/stolostron/governance-policy-propagator/api/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -29,7 +29,7 @@ type AuthRealmSpec struct {
 	PlacementRef corev1.LocalObjectReference `json:"placementRef,omitempty"`
 
 	//RemediateAction defines the remediation action to apply to the idp policy
-	// +kubebuilder:validation:Enum=enforce;inform
+	//For possible values check the policyv1 project (ie: Inform and inform are accepted)
 	// +required
 	RemediateAction policyv1.RemediationAction `json:"remediateAction,omitempty"`
 
