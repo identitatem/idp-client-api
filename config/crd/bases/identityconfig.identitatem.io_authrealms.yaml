@@ -615,17 +615,14 @@ spec:
                     type: string
                 type: object
               remediateAction:
-                allOf:
-                - enum:
-                  - Inform
-                  - inform
-                  - Enforce
-                  - enforce
-                - enum:
-                  - enforce
-                  - inform
-                description: RemediateAction defines the remediation action to apply
-                  to the idp policy
+                description: 'RemediateAction defines the remediation action to apply
+                  to the idp policy For possible values check the policyv1 project
+                  (ie: Inform and inform are accepted)'
+                enum:
+                - Inform
+                - inform
+                - Enforce
+                - enforce
                 type: string
               routeSubDomain:
                 description: RouteSubDomain defines a string that will be used for
