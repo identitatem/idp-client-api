@@ -2,7 +2,7 @@
 
 ## Mission Statement
 
-We seek to form an open community around multicluster and multicloud scenarios for containerized applications. We propose to anchor the initial community around  github.com/stolostron and open-cluster-management.io.
+We seek to form an open community around multicluster and multicloud scenarios for containerized applications. We propose to anchor the initial community around  github.com/open-cluster-management-io and open-cluster-management.io.
 
 We seek to add value to the community by a focused effort around many aspects of how users are deploying and managing Kubernetes clusters today. We seek to engage other parts of the community and both contribute to pre-existing efforts and invite contributors in those communities to cross-collaborate as part of this project.
 
