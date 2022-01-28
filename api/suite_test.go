@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -15,7 +15,6 @@ import (
 	"k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/client-go/rest"
 	"sigs.k8s.io/controller-runtime/pkg/envtest"
-	"sigs.k8s.io/controller-runtime/pkg/envtest/printer"
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
@@ -38,10 +37,14 @@ var k8sClient client.Client
 
 func TestAPIs(t *testing.T) {
 	RegisterFailHandler(Fail)
-
-	RunSpecsWithDefaultAndCustomReporters(t,
+	// fetch the current config
+	suiteConfig, reporterConfig := GinkgoConfiguration()
+	// adjust it
+	suiteConfig.SkipStrings = []string{"NEVER-RUN"}
+	reporterConfig.FullTrace = true
+	RunSpecs(t,
 		"Identitatem API Suite",
-		[]Reporter{printer.NewlineReporter{}})
+		reporterConfig)
 }
 
 var _ = BeforeSuite(func() {
@@ -78,7 +81,7 @@ var _ = BeforeSuite(func() {
 	Expect(err).NotTo(HaveOccurred())
 	Expect(k8sClient).NotTo(BeNil())
 
-}, 60)
+})
 
 var _ = AfterSuite(func() {
 	By("tearing down the test environment")
