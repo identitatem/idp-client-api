@@ -26,7 +26,8 @@ check-copyright:
 	@build/check-copyright.sh
 
 test: generate fmt vet manifests
-	@go test ./... -coverprofile cover.out &&\
+	@mkdir -p results
+	@go test ./... -cover -coverprofile cover.out -coverpkg=./... &&\
 	COVERAGE=`go tool cover -func="cover.out" | grep "total:" | awk '{ print $$3 }' | sed 's/[][()><%]/ /g'` &&\
 	echo "-------------------------------------------------------------------------" &&\
 	echo "TOTAL COVERAGE IS $$COVERAGE%" &&\
@@ -69,7 +70,7 @@ ifeq (, $(shell which controller-gen))
 	CONTROLLER_GEN_TMP_DIR=$$(mktemp -d) ;\
 	cd $$CONTROLLER_GEN_TMP_DIR ;\
 	go mod init tmp ;\
-	go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.6.2 ;\
+	go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.8.0 ;\
 	rm -rf $$CONTROLLER_GEN_TMP_DIR ;\
 	)
 CONTROLLER_GEN=$(GOBIN)/controller-gen
