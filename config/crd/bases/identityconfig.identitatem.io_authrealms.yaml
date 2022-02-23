@@ -44,6 +44,15 @@ spec:
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
                 type: object
+              githubExtraConfigs:
+                additionalProperties:
+                  properties:
+                    loadAllGroups:
+                      description: LoadAllGroups if true the groups import will be
+                        enabled
+                      type: boolean
+                  type: object
+                type: object
               host:
                 description: Host defines the url of the proxy
                 type: string
@@ -616,6 +625,47 @@ spec:
                       description: Optional filter to apply when searching the directory.
                         For example "(objectClass=person)"
                       type: string
+                    groupSearch:
+                      description: Optional The groupSearch to apply to find the groups
+                        of the user
+                      properties:
+                        baseDN:
+                          description: BaseDN to start the search from. For example
+                            "cn=groups,dc=example,dc=com"
+                          type: string
+                        filter:
+                          description: Optional filter to apply when searching the
+                            directory. For example "(objectClass=posixGroup)"
+                          type: string
+                        nameAttr:
+                          description: The attribute of the group that represents
+                            its name.
+                          type: string
+                        scope:
+                          type: string
+                        userMatchers:
+                          description: "Array of the field pairs used to match a user
+                            to a group. See the \"UserMatcher\" struct for the exact
+                            field names \n Each pair adds an additional requirement
+                            to the filter that an attribute in the group match the
+                            user's attribute value. For example that the \"members\"
+                            attribute of a group matches the \"uid\" of the user.
+                            The exact filter being added is: \n (userMatchers[n].<groupAttr>=userMatchers[n].<userAttr
+                            value>)"
+                          items:
+                            description: LDAP UserMatcher holds information about
+                              user and group matching
+                            properties:
+                              groupAttr:
+                                type: string
+                              userAttr:
+                                type: string
+                            required:
+                            - groupAttr
+                            - userAttr
+                            type: object
+                          type: array
+                      type: object
                   type: object
                 description: LDAPExtraConfigs extra server configuration setting for
                   LDAP, the key being the idp.name

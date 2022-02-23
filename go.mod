@@ -14,6 +14,7 @@ require (
 
 require (
 	github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32
+	github.com/identitatem/dex-operator v0.0.4-0.20220208162418-1f21c45b5c52
 	github.com/onsi/ginkgo/v2 v2.1.1
 	github.com/onsi/gomega v1.18.0
 	github.com/openshift/api v3.9.1-0.20190924102528-32369d4db2ad+incompatible

@@ -3,6 +3,7 @@
 package v1alpha1
 
 import (
+	dexoperatorv1alpha1 "github.com/identitatem/dex-operator/api/v1alpha1"
 	openshiftconfigv1 "github.com/openshift/api/config/v1"
 	policyv1 "github.com/stolostron/governance-policy-propagator/api/v1"
 	corev1 "k8s.io/api/core/v1"
@@ -49,6 +50,8 @@ type AuthRealmSpec struct {
 	// the key being the idp.name
 	// +optional
 	LDAPExtraConfigs map[string]LDAPExtraConfig `json:"ldapExtraConfigs,omitempty"`
+
+	GitHubExtraConfigs map[string]GitHubExtraConfig `json:"githubExtraConfigs,omitempty"`
 }
 
 type LDAPExtraConfig struct {
@@ -59,7 +62,17 @@ type LDAPExtraConfig struct {
 	// Optional filter to apply when searching the directory. For example "(objectClass=person)"
 	// +optional
 	Filter string `json:"filter,omitempty"`
+
+	//Optional The groupSearch to apply to find the groups of the user
+	// +optional
+	GroupSearch dexoperatorv1alpha1.GroupSearchSpec `json:"groupSearch,omitempty"`
 }
+
+type GitHubExtraConfig struct {
+	// LoadAllGroups if true the groups import will be enabled
+	LoadAllGroups bool `json:"loadAllGroups,omitempty"`
+}
+
 type AuthProxyType string
 
 const (
