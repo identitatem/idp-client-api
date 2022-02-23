@@ -103,7 +103,7 @@ func (c *FakeIDPConfigs) UpdateStatus(ctx context.Context, iDPConfig *v1alpha1.I
 // Delete takes name of the iDPConfig and deletes it. Returns an error if one occurs.
 func (c *FakeIDPConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(idpconfigsResource, c.ns, name), &v1alpha1.IDPConfig{})
+		Invokes(testing.NewDeleteActionWithOptions(idpconfigsResource, c.ns, name, opts), &v1alpha1.IDPConfig{})
 
 	return err
 }
