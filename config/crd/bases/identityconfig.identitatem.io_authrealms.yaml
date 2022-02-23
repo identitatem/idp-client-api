@@ -626,8 +626,8 @@ spec:
                         For example "(objectClass=person)"
                       type: string
                     groupSearch:
-                      description: Optional A yaml representing the Dex GroupSearch
-                        parameters. (see https://github.com/dexidp/dex/blob/master/connector/ldap/ldap.go#L43)
+                      description: Optional The groupSearch to apply to find the groups
+                        of the user
                       properties:
                         baseDN:
                           description: BaseDN to start the search from. For example

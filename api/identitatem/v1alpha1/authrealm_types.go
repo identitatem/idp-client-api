@@ -63,7 +63,7 @@ type LDAPExtraConfig struct {
 	// +optional
 	Filter string `json:"filter,omitempty"`
 
-	//Optional A yaml representing the Dex GroupSearch parameters. (see https://github.com/dexidp/dex/blob/master/connector/ldap/ldap.go#L43)
+	//Optional The groupSearch to apply to find the groups of the user
 	// +optional
 	GroupSearch dexoperatorv1alpha1.GroupSearchSpec `json:"groupSearch,omitempty"`
 }
