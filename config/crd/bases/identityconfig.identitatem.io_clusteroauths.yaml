@@ -35,6 +35,30 @@ spec:
           spec:
             description: ClusterOAuthSpec defines the desired state of ClusterOAuth
             properties:
+              authRealmReference:
+                properties:
+                  kind:
+                    description: the Kind of the referenced resource
+                    type: string
+                  name:
+                    description: The name of the referenced object
+                    type: string
+                  namespace:
+                    description: The namespace of the referenced object
+                    type: string
+                type: object
+              dexClientReference:
+                properties:
+                  kind:
+                    description: the Kind of the referenced resource
+                    type: string
+                  name:
+                    description: The name of the referenced object
+                    type: string
+                  namespace:
+                    description: The namespace of the referenced object
+                    type: string
+                type: object
               oauth:
                 description: "OAuth holds cluster-wide information about OAuth.  The
                   canonical name is `cluster`. It is used to configure the integrated
