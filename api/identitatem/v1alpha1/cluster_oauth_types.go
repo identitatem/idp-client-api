@@ -15,7 +15,18 @@ type ClusterOAuthSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	OAuth *openshiftconfigv1.OAuth `json:"oauth,omitempty"`
+	OAuth              *openshiftconfigv1.OAuth `json:"oauth,omitempty"`
+	AuthRealmReference RelatedObjectReference   `json:"authRealmReference,omitempty"`
+	DexClientReference RelatedObjectReference   `json:"dexClientReference,omitempty"`
+}
+
+type RelatedObjectReference struct {
+	// the Kind of the referenced resource
+	Kind string `json:"kind,omitempty"`
+	// The name of the referenced object
+	Name string `json:"name,omitempty"`
+	// The namespace of the referenced object
+	Namespace string `json:"namespace,omitempty"`
 }
 
 // ClusterOAuthStatus defines the observed state of ClusterOAuth
