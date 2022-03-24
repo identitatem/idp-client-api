@@ -34,6 +34,11 @@ const (
 	// GrcStrategyType       StrategyType = "grc"
 )
 
+const (
+	//Applied when the StratagyApplied was correct applied,
+	StrategyApplied string = "Applied"
+)
+
 // StrategyStatus defines the observed state of Strategy
 type StrategyStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster

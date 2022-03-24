@@ -17,6 +17,7 @@ type ClusterOAuthSpec struct {
 
 	OAuth              *openshiftconfigv1.OAuth `json:"oauth,omitempty"`
 	AuthRealmReference RelatedObjectReference   `json:"authRealmReference,omitempty"`
+	StrategyReference  RelatedObjectReference   `json:"strategyReference,omitempty"`
 	DexClientReference RelatedObjectReference   `json:"dexClientReference,omitempty"`
 }
 
@@ -40,7 +41,10 @@ type ClusterOAuthStatus struct {
 }
 
 const (
-	ClusterOAuthSucceed string = "succeed"
+	//Applied when the ClusterOAuth was correct applied,
+	//it does not guaranty that the OAuth gets updated on the managedcluster
+	//for that you will have to check the cluster status
+	ClusterOAuthApplied string = "Applied"
 )
 
 // +genclient

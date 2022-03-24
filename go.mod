@@ -18,6 +18,7 @@ require (
 	github.com/onsi/ginkgo/v2 v2.1.1
 	github.com/onsi/gomega v1.18.0
 	github.com/openshift/api v3.9.1-0.20190924102528-32369d4db2ad+incompatible
+	open-cluster-management.io/api v0.5.1-0.20211109002058-9676c7a1e606
 	sigs.k8s.io/controller-runtime v0.11.0
 )
 
