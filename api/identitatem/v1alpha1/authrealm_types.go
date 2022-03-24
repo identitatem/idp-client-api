@@ -8,6 +8,8 @@ import (
 	policyv1 "github.com/stolostron/governance-policy-propagator/api/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	clusterv1alpha1 "open-cluster-management.io/api/cluster/v1alpha1"
+	workv1 "open-cluster-management.io/api/work/v1"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
@@ -89,7 +91,7 @@ type AuthRealmStatus struct {
 	// +optional
 	Conditions []metav1.Condition `json:"conditions"`
 	// +optional
-	Clusters []AuthRealmClusterStatus `json:"clusters,omitempty"`
+	Strategies []AuthRealmStrategyStatus `json:"strategies,omitempty"`
 }
 
 const (
@@ -100,11 +102,47 @@ const (
 )
 
 // AuthRealmClusterStatus defines the status for each cluster
-type AuthRealmClusterStatus struct {
-	// The name of the cluster
+type AuthRealmStrategyStatus struct {
+	// The name of the strategy
 	Name string `json:"name"`
 	// Conditions contains the different condition statuses for each cluster for this AuthRealm.
-	Conditions []metav1.Condition `json:"conditions"`
+	// +optional
+	StrategyStatus `json:",inline"`
+	//Placement
+	// +optional
+	Placement Placement `json:"placement"`
+	//Clusters status, one status per cluster
+	// +optional
+	Clusters []AuthRealmClusterStatus `json:"clusters"`
+}
+
+type Placement struct {
+	//Name of the placement
+	Name string `json:"name"`
+	//Placement Status
+	clusterv1alpha1.PlacementStatus `json:",inline"`
+}
+type AuthRealmClusterStatus struct {
+	//ClusterName
+	Name string `json:"name"`
+	//ClusterOAuth status, only 1 as a authrealm has only one clusterOAuth per cluster
+	ClusterOAuth AuthRealmClusterOAuthStatus `json:"clusterOAuth"`
+	//ManifestWork status
+	ManifestWork AuthRealmManifestWorkStatus `json:"manifestWork"`
+}
+
+type AuthRealmClusterOAuthStatus struct {
+	//ClusterOAuth name
+	Name string `json:"name"`
+	//ClusterOAuth status
+	ClusterOAuthStatus `json:",inline"`
+}
+
+type AuthRealmManifestWorkStatus struct {
+	//Manifestwork name
+	Name string `json:"name"`
+	//Manifestwork status
+	workv1.ManifestWorkStatus `json:",inline"`
 }
 
 // +genclient

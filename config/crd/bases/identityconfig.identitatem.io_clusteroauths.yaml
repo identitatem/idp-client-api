@@ -785,6 +785,18 @@ spec:
                 required:
                 - spec
                 type: object
+              strategyReference:
+                properties:
+                  kind:
+                    description: the Kind of the referenced resource
+                    type: string
+                  name:
+                    description: The name of the referenced object
+                    type: string
+                  namespace:
+                    description: The namespace of the referenced object
+                    type: string
+                type: object
             type: object
           status:
             description: ClusterOAuthStatus defines the observed state of ClusterOAuth
