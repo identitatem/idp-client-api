@@ -16,7 +16,7 @@ type StrategySpec struct {
 	// Important: Run "make generate-clients" to regenerate code after modifying this file
 
 	// Strategy to use for applying the AuthRealm to the managed clusters
-	// +kubebuilder:validation:Enum=backplane;grc
+	// +kubebuilder:validation:Enum=backplane;grc;hypershift
 	// +required
 	Type StrategyType `json:"type"`
 
@@ -32,6 +32,7 @@ type StrategyType string
 const (
 	BackplaneStrategyType StrategyType = "backplane"
 	// GrcStrategyType       StrategyType = "grc"
+	HypershiftStrategyType StrategyType = "hypershift"
 )
 
 const (

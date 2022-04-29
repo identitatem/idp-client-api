@@ -6,6 +6,7 @@ import (
 	dexoperatorv1alpha1 "github.com/identitatem/dex-operator/api/v1alpha1"
 	openshiftconfigv1 "github.com/openshift/api/config/v1"
 	policyv1 "github.com/stolostron/governance-policy-propagator/api/v1"
+	hypershiftdeploymentv1alpha1 "github.com/stolostron/hypershift-deployment-controller/api/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	clusterv1alpha1 "open-cluster-management.io/api/cluster/v1alpha1"
@@ -129,6 +130,8 @@ type AuthRealmClusterStatus struct {
 	ClusterOAuth AuthRealmClusterOAuthStatus `json:"clusterOAuth"`
 	//ManifestWork status
 	ManifestWork AuthRealmManifestWorkStatus `json:"manifestWork"`
+	//HypershiftDeployment status
+	HypershiftDeployment AuthRealmHypershiftDeploymentStatus `json:"hypershiftDeployment"`
 }
 
 type AuthRealmClusterOAuthStatus struct {
@@ -143,6 +146,13 @@ type AuthRealmManifestWorkStatus struct {
 	Name string `json:"name"`
 	//Manifestwork status
 	workv1.ManifestWorkStatus `json:",inline"`
+}
+
+type AuthRealmHypershiftDeploymentStatus struct {
+	//HypershiftDeployment name
+	Name string `json:"name"`
+	//HypershiftDeployment status
+	hypershiftdeploymentv1alpha1.HypershiftDeploymentStatus `json:",inline"`
 }
 
 // +genclient
