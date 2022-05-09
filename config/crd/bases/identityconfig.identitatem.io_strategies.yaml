@@ -53,6 +53,7 @@ spec:
                 enum:
                 - backplane
                 - grc
+                - hypershift
                 type: string
             required:
             - type
