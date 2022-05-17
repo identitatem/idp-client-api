@@ -617,14 +617,6 @@ spec:
               ldapExtraConfigs:
                 additionalProperties:
                   properties:
-                    baseDN:
-                      description: BaseDN to start the LDAP user search from. For
-                        example "cn=users,dc=example,dc=com"
-                      type: string
-                    filter:
-                      description: Optional filter to apply when searching the directory.
-                        For example "(objectClass=person)"
-                      type: string
                     groupSearch:
                       description: Optional The groupSearch to apply to find the groups
                         of the user
