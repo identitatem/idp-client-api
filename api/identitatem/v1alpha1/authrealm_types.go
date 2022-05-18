@@ -58,14 +58,6 @@ type AuthRealmSpec struct {
 }
 
 type LDAPExtraConfig struct {
-	// BaseDN to start the LDAP user search from. For example "cn=users,dc=example,dc=com"
-	// +optional
-	BaseDN string `json:"baseDN,omitempty"`
-
-	// Optional filter to apply when searching the directory. For example "(objectClass=person)"
-	// +optional
-	Filter string `json:"filter,omitempty"`
-
 	//Optional The groupSearch to apply to find the groups of the user
 	// +optional
 	GroupSearch dexoperatorv1alpha1.GroupSearchSpec `json:"groupSearch,omitempty"`
