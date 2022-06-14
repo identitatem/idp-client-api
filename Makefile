@@ -18,7 +18,7 @@ endif
 # enable Go modules
 export GO111MODULE=on
 
-all: manifests generate-clients 
+all: manifests generate-clients
 
 check: check-copyright
 
@@ -27,13 +27,13 @@ check-copyright:
 
 test: generate fmt vet manifests
 	@mkdir -p results
-	@go test ./... -cover -coverprofile cover.out -coverpkg=./... &&\
-	COVERAGE=`go tool cover -func="cover.out" | grep "total:" | awk '{ print $$3 }' | sed 's/[][()><%]/ /g'` &&\
+	@go test ./... -cover -coverprofile coverage.out -coverpkg=./... &&\
+	COVERAGE=`go tool cover -func="coverage.out" | grep "total:" | awk '{ print $$3 }' | sed 's/[][()><%]/ /g'` &&\
 	echo "-------------------------------------------------------------------------" &&\
 	echo "TOTAL COVERAGE IS $$COVERAGE%" &&\
 	echo "-------------------------------------------------------------------------" &&\
-	go tool cover -html "cover.out" -o ${PROJECT_DIR}/cover.html 
-	
+	go tool cover -html "coverage.out" -o ${PROJECT_DIR}/cover.html 
+
 # Install CRDs into a cluster
 install: manifests
 	kustomize build config/crd | kubectl apply -f -
