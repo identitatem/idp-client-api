@@ -1,5 +1,8 @@
 
 # Copyright Red Hat
+
+-include /opt/build-harness/Makefile.prow
+
 SHELL := /bin/bash
 
 export PROJECT_DIR            = $(shell 'pwd')
@@ -32,7 +35,7 @@ test: generate fmt vet manifests
 	echo "-------------------------------------------------------------------------" &&\
 	echo "TOTAL COVERAGE IS $$COVERAGE%" &&\
 	echo "-------------------------------------------------------------------------" &&\
-	go tool cover -html "coverage.out" -o ${PROJECT_DIR}/cover.html 
+	go tool cover -html "coverage.out" -o ${PROJECT_DIR}/cover.html
 
 # Install CRDs into a cluster
 install: manifests
