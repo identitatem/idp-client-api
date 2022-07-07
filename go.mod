@@ -1,6 +1,6 @@
 module github.com/identitatem/idp-client-api
 
-go 1.17
+go 1.18
 
 require (
 	github.com/stolostron/governance-policy-propagator v0.0.0-20220125192743-95d49290a318
