@@ -1,7 +1,7 @@
 [comment]: # ( Copyright Red Hat )
 # idp-client-api
 
-This project defines the APIs for the identittem component.
+This project defines the APIs for the identitatem component.
 
 ## Build
 
